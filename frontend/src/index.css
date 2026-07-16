@@ -1,0 +1,288 @@
+:root {
+  /* Colors */
+  --bg-primary: #0B1120;
+  --bg-secondary: #111827;
+  --bg-card: rgba(31, 41, 55, 0.6);
+  --bg-card-hover: rgba(55, 65, 81, 0.8);
+  
+  /* Up, down, sidebar bars */
+  --bg-navbar: rgba(11, 17, 32, 0.75);
+  --bg-sidebar: rgba(17, 24, 39, 0.95);
+  --bg-footer: rgba(11, 17, 32, 0.8);
+  
+  --accent-primary: #22D3EE;     /* Cyan */
+  --accent-secondary: #38BDF8;   /* Sky Blue */
+  --accent-tertiary: #ec4899;    /* Keep pink as tertiary/highlight */
+  
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-inverse: #0B1120;
+  
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.16);
+  
+  --glow-primary: rgba(34, 211, 238, 0.25);
+  --glow-secondary: rgba(56, 189, 248, 0.25);
+  
+  /* Success & Error */
+  --color-success: #10B981;
+  --color-success-glow: rgba(16, 185, 129, 0.2);
+  --color-success-bg: rgba(16, 185, 129, 0.1);
+  --color-error: #EF4444;
+  --color-error-bg: rgba(239, 68, 68, 0.07);
+  --color-error-border: rgba(239, 68, 68, 0.25);
+  
+  /* Fonts */
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  
+  /* Layout */
+  --navbar-height: 80px;
+  --max-width: 1200px;
+  
+  /* Scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-primary) var(--bg-primary);
+}
+
+:root[data-theme='light'] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.65);
+  --bg-card-hover: rgba(255, 255, 255, 0.85);
+  
+  --bg-navbar: rgba(248, 250, 252, 0.75);
+  --bg-sidebar: rgba(255, 255, 255, 0.95);
+  --bg-footer: rgba(248, 250, 252, 0.8);
+  
+  --accent-primary: #6366f1;
+  --accent-secondary: #0891b2;
+  --accent-tertiary: #db2777;
+  
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-inverse: #ffffff;
+  
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.15);
+  
+  --glow-primary: rgba(99, 102, 241, 0.12);
+  --glow-secondary: rgba(8, 145, 178, 0.12);
+}
+
+/* Smooth transition between dark/light theme switching */
+body, .glass-panel, .nav-link, .btn, .theme-toggle-btn, input, textarea, footer, p, h1, h2, h3, h4, span, label, svg {
+  transition: background-color 0.35s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-tertiary);
+}
+
+/* Typography Utilities */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--text-main) 20%, var(--accent-primary) 60%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-alt {
+  background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 50%, var(--accent-tertiary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: var(--border-color);
+  }
+  50% {
+    border-color: var(--accent-primary);
+  }
+}
+
+/* Reusable Glassmorphism classes */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 40px 0 rgba(139, 92, 246, 0.1);
+  transform: translateY(-4px);
+}
+
+/* Section Styling */
+.section {
+  min-height: 100vh;
+  padding: 100px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  border-radius: 2px;
+}
+
+/* Scroll Fade Animation Helpers */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Floating particles layer container */
+#canvas-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  background-color: var(--bg-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .section {
+    padding: 80px 16px 40px;
+  }
+}
+
+/* Footer Styling */
+.footer-glass {
+  background: var(--bg-footer);
+  border-top: 1px solid var(--border-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 40px 24px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--text-main);
+}
+
+.footer-text {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.footer-location {
+  color: var(--accent-secondary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

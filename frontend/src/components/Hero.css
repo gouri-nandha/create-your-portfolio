@@ -1,0 +1,224 @@
+.hero-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 24px;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.hero-content {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-greeting {
+  font-size: 1.2rem;
+  color: var(--accent-secondary);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.hero-name {
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 24px;
+  height: 48px; /* avoid layout shifting */
+  display: flex;
+  align-items: center;
+}
+
+.typing-text {
+  color: var(--accent-primary);
+  margin-left: 10px;
+}
+
+.cursor {
+  color: var(--accent-secondary);
+  font-weight: 300;
+  animation: blink 0.8s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-desc {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 650px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+/* CTAs Buttons styling */
+.hero-ctas {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.btn {
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  border: none;
+  color: var(--text-main);
+  box-shadow: 0 4px 15px var(--glow-primary);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--glow-primary), 0 0 10px rgba(6, 182, 212, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1.5px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  transform: translateY(-3px);
+}
+
+.btn-icon-right {
+  transition: transform 0.3s ease;
+}
+
+.btn-primary:hover .btn-icon-right {
+  transform: translateX(4px);
+}
+
+/* Social icons layout */
+.hero-socials {
+  display: flex;
+  gap: 24px;
+}
+
+.social-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-decoration: none;
+}
+
+.social-icon-wrapper:hover {
+  color: var(--text-main);
+  border-color: var(--accent-secondary);
+  background: rgba(6, 182, 212, 0.05);
+  box-shadow: 0 0 15px var(--glow-secondary);
+  transform: translateY(-5px);
+}
+
+.social-svg {
+  transition: transform 0.3s ease;
+}
+
+.social-icon-wrapper:hover .social-svg {
+  transform: scale(1.1);
+}
+
+/* Scroll indicator mouse animation */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 48px;
+  border: 2px solid var(--border-color);
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+  transition: border-color 0.3s;
+}
+
+.hero-scroll-indicator:hover {
+  border-color: var(--accent-secondary);
+}
+
+.mouse-wheel {
+  width: 6px;
+  height: 10px;
+  background-color: var(--accent-secondary);
+  border-radius: 3px;
+  animation: scrollDown 1.6s infinite;
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+}
+
+/* Responsiveness sizes */
+@media (max-width: 768px) {
+  .hero-name {
+    font-size: 3rem;
+  }
+  .hero-title {
+    font-size: 1.6rem;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  .btn {
+    justify-content: center;
+    width: 100%;
+  }
+}

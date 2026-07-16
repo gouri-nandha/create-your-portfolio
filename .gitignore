@@ -1,0 +1,20 @@
+# Node.js
+**/node_modules/
+**/dist/
+**/.env*
+
+# Python
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+ENV/
+env/
+
+# Databases & local storage
+**/db.sqlite3
+.vscode/
+.idea/
+.DS_Store
