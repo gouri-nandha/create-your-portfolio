@@ -207,7 +207,11 @@ export const BuilderPage: React.FC = () => {
         {/* CENTER COLUMN: Live Interactive Preview */}
         <main className="flex-1 bg-slate-950 overflow-y-auto flex justify-center items-start p-2 sm:p-4">
           <div className={`transition-all duration-300 ${getViewportWidthClass()}`}>
-            <PortfolioRenderer portfolio={currentPortfolio} isInteractive={true} />
+            <PortfolioRenderer
+              portfolio={currentPortfolio}
+              isInteractive={true}
+              viewportMode={viewportMode}
+            />
           </div>
         </main>
 

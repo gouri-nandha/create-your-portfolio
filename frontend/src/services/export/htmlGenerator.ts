@@ -303,6 +303,14 @@ body.style-developer {
   --radius: 6px;
   --primary: #10b981;
 }
+body.style-creative {
+  --radius: 20px;
+  --primary: #ec4899;
+  --bg: #12071a;
+  --bg-secondary: #1a0b28;
+  --card-bg: #1f0f33;
+  --border: rgba(236, 72, 153, 0.25);
+}
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
